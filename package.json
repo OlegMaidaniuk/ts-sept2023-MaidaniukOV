@@ -1,0 +1,15 @@
+{
+  "name": "ts-sept2023-maidaniukov",
+  "version": "1.0.0",
+  "main": "hello.js",
+  "scripts": {
+    "start": "tsc src/index.ts --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {},
+  "description": ""
+}
