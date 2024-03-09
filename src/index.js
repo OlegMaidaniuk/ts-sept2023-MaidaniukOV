@@ -46,7 +46,7 @@
 // func(['3', 'den', 'manya']);
 // func(['5', 'ben', 'anya']);
 // func(['7', 'men', 'vanya'])
-var a = 6;
+// let a: number = 6
 // a='dddd'- так не може бути
 // варіанти  які можливі:
 // let b:string=a+''
@@ -75,7 +75,11 @@ var a = 6;
 // в нас буде втому чи іншому полі об'єкта і тут у нас
 // в силу вступають дженеріки<T>(T-назва довільна,
 // їх може бути декілька вписуються поруч через кому <DATA,T,N>):
-// interface IUser<T>{
+// interface IUser<T,data, ff> - можна вписувати багато варіантів
+// дженеріків одночасно,
+// або ні тобто використовувати лише один дженерік
+// interface IUser<T>
+// {
 //     name:string;
 //     age:number;
 //     house:number;
@@ -105,7 +109,7 @@ var a = 6;
 //     age:545
 // }
 // або інший варіант, для того щоб не плутатись де вказане поле а де ні
-// можна вказувати частина якого інтерфейсу це має бути
+// можна вказувати - частина якого інтерфейсу це має бути
 // за допомогою Partial:
 // interface IUser{
 //     name:string;
@@ -130,12 +134,95 @@ var a = 6;
 // console.log(user.age);
 // -приватний class означає те що
 // цією змінною можна користуватись тільки всередині цього класу:
-var User = /** @class */ (function () {
-    function User(name, age) {
-        this.name = name;
-        this.age = age;
+// class User {
+//     private name: string;
+//     private age: number;
+//
+//     constructor(name: string,
+//                 age: number) {
+//         this.name = name;
+//         this.age = age;
+//     }
+// }
+//
+// const user = new User('Bax', 15);
+// console.log(user);
+// щоб в приватному класі дістати поле потрібен
+// відповідний метод
+// class User {
+//     private name: string;
+//     private age: number;
+//
+//     constructor(name: string,
+//                 age: number) {
+//         this.name = name;
+//         this.age = age;
+//     }
+//     getName():string{
+//         return this.name
+//     }
+// }
+//
+// const user = new User('Bax', 15);
+// console.log(user.getName());
+// // але є простіші способи записування методу наведеного
+// перед цим вище
+// class User {
+// constructor(private name: string, private age: number)
+// {
+// }
+//     getName():string{
+//         return this.name
+//     }
+// }
+// const user = new User('Bax', 15);
+// console.log(user.getName());
+// завдяки модефікатору protected ми можемо використовувати відповідну
+// змінну всередині класу через this або ж використовувати дану змінну в
+// класі від якого ми унаслідувались в "сина" цього класу:
+// class User {
+// constructor(protected name: string, private age: number)
+// {
+// }
+//     getName():string{
+//         return this.name
+//     }
+// }
+// const user = new User('Bax', 15);
+// console.log(user.getName());
+//  наш клас може бути такод типом для чогось іншого,
+//  до прикладу ми створимо масив юзерів:
+// class User {
+// constructor(protected name: string, private age: number)
+// {
+// }
+//     getName():string{
+//         return this.name
+//     }
+// }
+// const user = new User('Bax', 15);
+// console.log(user.getName());
+// const users:User[]=[
+//     new User('Fax', 26),
+//     new User('poplavsky', 67),
+//     new User('barbos', 6)]
+// console.log(users, user);
+// -щось інше від відповідного зразка додати неможливо
+//
+var Car = /** @class */ (function () {
+    function Car(seats, brand, year) {
+        this.seats = seats;
+        this.brand = brand;
+        this.year = year;
     }
-    return User;
+    Car.prototype.start = function () {
+        console.log('yoklmn');
+    };
+    Car.prototype.getInfo = function () {
+        console.log("Brand:".concat(this.brand, "--seats:").concat(this.seats, "--year").concat(this.year));
+    };
+    return Car;
 }());
-var user = new User('Bax', 15);
-console.log(user);
+var car = new Car(5, "Subaru", 2022);
+car.getInfo();
+car.start();
