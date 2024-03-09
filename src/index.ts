@@ -299,11 +299,11 @@ class Triangle extends Shape{
         super();
     }
     perimeter(): number {
-        return this.a+this.b+this.c
+        return this.a+this.b+this.c*2
     }
 
     area(): number {
-        return this.a*this.b
+        return this.a*this.b/2
     }
 }
 
@@ -312,7 +312,7 @@ constructor(private a:number, private b:number) {
     super();
 }
     perimeter(): number {
-        return this.a+this.b
+        return this.a+this.b*2
     }
 
     area(): number {
