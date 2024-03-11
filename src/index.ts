@@ -2,9 +2,9 @@
 // }
 // func(2)
 
-// const func = (name:string) => {
-// }
-// func('2')
+const func = (name:string) => {
+}
+console.log(func('2'));
 
 // const func = (name:boolean) => {
 // }
@@ -287,45 +287,47 @@
 
 //        ТС дає нам доступ до абстракції:
 //
-abstract class Shape{
-    abstract perimeter():number;
-
-    abstract area():number;
-}
-
-class Triangle extends Shape{
-
-    constructor(private a:number, private b:number, private c:number) {
-        super();
-    }
-    perimeter(): number {
-        return this.a+this.b+this.c*2
-    }
-
-    area(): number {
-        return this.a*this.b/2
-    }
-}
-
-class Rectangle extends Shape{
-constructor(private a:number, private b:number) {
-    super();
-}
-    perimeter(): number {
-        return this.a+this.b*2
-    }
-
-    area(): number {
-        return this.a*this.b
-    }
-}
-const shapes:Shape[]=[
-    new Triangle(2,4,2),
-    new Rectangle(4,2),
-    new Triangle(4,8,10)
-]
-for (let shape of shapes) {
-    console.log(shape.constructor['name']);
-    console.log(shape.area());
-    console.log(shape.perimeter());
-}
+// abstract class Shape{
+//     abstract perimeter():number;
+//
+//     abstract area():number;
+// }
+//
+// class Triangle extends Shape{
+//
+//     constructor(private a:number, private b:number, private c:number) {
+//         super();
+//     }
+//     perimeter(): number {
+//         return this.a+this.b+this.c*2
+//     }
+//
+//     area(): number {
+//         return this.a*this.b/2
+//     }
+// }
+//
+// class Rectangle extends Shape{
+// constructor(private a:number, private b:number) {
+//     super();
+// }
+//     perimeter(): number {
+//         return this.a+this.b*2
+//     }
+//
+//     area(): number {
+//         return this.a*this.b
+//     }
+// }
+// const shapes:Shape[]=[
+//     new Triangle(2,4,2),
+//     new Rectangle(4,2),
+//     new Triangle(4,8,10)
+// ]
+// for (let shape of shapes) {
+//     console.log(shape.constructor['name']);
+//     console.log(shape.area());
+//     console.log(shape.perimeter());
+// }
+let a = 10;
+console.log(a);
