@@ -1,9 +1,9 @@
 // const func = (name:string) => {
 // }
 // func(2)
-var func = function (name) {
-};
-console.log(func('2'));
+// const func = (name:string) => {
+// }
+// console.log(func('2'));
 // const func = (name:boolean) => {
 // }
 // func(true)
@@ -297,5 +297,3 @@ console.log(func('2'));
 //     console.log(shape.area());
 //     console.log(shape.perimeter());
 // }
-var a = 10;
-console.log(a);
