@@ -1,6 +1,8 @@
+console.log('hello from ts3');
 // const func = (name:string) => {
+// name.length
 // }
-// func(2)
+// func('2')
 
 // const func = (name:string) => {
 // }
