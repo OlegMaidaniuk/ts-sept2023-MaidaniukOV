@@ -1,4 +1,64 @@
-console.log('hello from ts3');
+interface ITodo {
+    id: number;
+    title: string
+}
+
+class NoteBook {
+    private _todos: ITodo[]
+
+    constructor(private name: string) {
+        this._initMain()
+    }
+
+    private _getTodosFromLS(): void {
+        this._todos = JSON.parse(localStorage.getItem(this.name)) || []
+            // [{id: 1, title: 'wakeUp'}]
+    }
+
+    private _setTodosToLS(): void {
+        localStorage.setItem(this.name, JSON.stringify(this._todos))
+        this._initTodos()
+    }
+
+    private _initMain(): void {
+        this._initForm()
+        this._initTodos()
+    }
+
+    private _initTodos(): void {
+        this._getTodosFromLS()
+        console.log(this._todos);
+        console.log('ddddddddf');
+        const todosDIV = document.querySelector('#todos') as HTMLDivElement;
+        todosDIV.innerHTML = ''
+        this._todos.forEach(todo => {
+            const todoDIV = document.createElement('div');
+            todoDIV.innerText = `${todo.id}) ${todo.title}`
+            todosDIV.appendChild(todoDIV)
+
+        })
+    }
+
+    private _initForm(): void {
+        const form = document.forms['form'] as HTMLFormElement;
+        form.onsubmit = (e) => {
+            e.preventDefault()
+            const input = e.target['title'] as HTMLInputElement;
+            const id = this._todos.slice(-1)[0]?.id + 1 || 1;
+            this._todos.push({id, title: input.value})
+            this._setTodosToLS()
+            form.reset()
+
+        }
+    }
+}
+
+new NoteBook('notebook1')
+
+
+// console.log('hello from ts4');
+
+
 // const func = (name:string) => {
 // name.length
 // }
@@ -283,8 +343,6 @@ console.log('hello from ts3');
 //     console.log(`Brand:${this.brand}--seats:${this.seats}--year${this.year}`)
 // }
 // }
-
-
 
 
 //        ТС дає нам доступ до абстракції:
