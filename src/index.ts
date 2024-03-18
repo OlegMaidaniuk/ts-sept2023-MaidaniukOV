@@ -53,7 +53,7 @@ class NoteBook {
     }
 }
 
-new NoteBook('notebook1')
+new NoteBook('notebook3')
 
 
 // console.log('hello from ts4');
